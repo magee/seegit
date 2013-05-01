@@ -7,9 +7,9 @@ var HeadView = Backbone.View.extend({
     self.render();
 
     // change this to when shalist[]['blob'] changes..
-    // this.model.on('change:decodedContent', function() {
-    //   self.render(baseIndex);
-    // });
+    this.model.on('change:decodedContent', function() {
+      self.render();
+    });
     this.model.on('change:diffReady', function() {
       self.render();
     });
@@ -26,12 +26,12 @@ var HeadView = Backbone.View.extend({
     var $select = $('<select id="headSelector">');
     this.$el.append($select);
 
-      if(shaList.length > 0) {
-        for(var i = 0; i < shaList.length; i++) {
-          if(shaList[i]['blob']) {
+      if(myApp.get('shaList').length > 0) {
+        for(var i = 0; i < myApp.get('shaList').length; i++) {
+          if(myApp.get('shaList')[i]['blob']) {
             var optionItem = $("<option></option>");
-            optionItem.attr("value",shaList[i]['time'])
-                      .text(shaList[i]['time']);
+            optionItem.attr("value",myApp.get('shaList')[i]['time'])
+                      .text(myApp.get('shaList')[i]['time']);
             $select.append($optionItem);
           }
         }
@@ -44,9 +44,9 @@ var HeadView = Backbone.View.extend({
 
     //this.$el.append('</select>');
 
-    if(shaList.length > 0) {
+    if(myApp.get('shaList').length > 0) {
       viewText = '<p class="fileContent"><pre><code class="prettyprint">'
-               + shaList[headIndex]['blob']
+               + myApp.get('shaList')[headIndex]['blob']
                + '</code></pre></p>'; 
     } else {
       viewText = 'coming soon..';

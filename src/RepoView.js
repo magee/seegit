@@ -18,6 +18,6 @@ var RepoView = Backbone.View.extend({
     this.$el.append(this.repoItemView.render().el);
     //self.$el.attr('id',"rname");
     return this;
-  },
+  }
 
 });

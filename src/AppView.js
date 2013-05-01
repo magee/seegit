@@ -30,9 +30,9 @@ var AppView = Backbone.View.extend({
       if(myApp.get('showFile')!==""){
         getAllCommitsForRepo(myApp.get('showUser'),myApp.get('currentRepo'),myApp.get('showFile'));
       };
-      if(shaList.length > 0)
-        myApp.set('decodedContent',shaList[0]['blob']);
-    });
+      if(myApp.get('shaList').length > 0)
+        myApp.set('decodedContent',myApp.get('shaList')[0]['blob']);
+    }); 
 
   },
 
@@ -134,14 +134,12 @@ var AppView = Backbone.View.extend({
     if(myApp.get('showFile') !== "") {
       var url = 'https://api.github.com/repos/'+this.model.get('showUser')+'/'
               +this.model.get('currentRepo')+'/contents/'+this.model.get('showFile')+'?'+cred;
-      console.log('fetchFileContentAndRender ',url)
+      // console.log('fetchFileContentAndRender ',url)
       $.ajax(url, {
 
         //contentType: 'application/json',
         accepts: 'application/vnd.github-blob.raw',
         dataType: 'jsonp',
-        //contentType: 'application/vnd.github-blob.raw',
-        //data: {},
         success: function(results){
           var somedata = results.data.content;
           decodedContent = decode64(somedata);
@@ -154,7 +152,8 @@ var AppView = Backbone.View.extend({
       }); 
     } else {
       decodedContent = "content of a selected file goes here";
-      context.render();/////////////
+      myApp.set('decodedContent',decodedContent)
+      //context.render();/////////////
     };
   },
 });

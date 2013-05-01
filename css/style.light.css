@@ -45,8 +45,8 @@ body {
 
 #main {
     display: inline-block;
-    width: 1150px;
-    height: 1000px;
+    width: 1600px;
+    height: 1200px;
     margin: 0px;
     padding: 20px 40px;
     border: solid #ddd;
@@ -137,7 +137,7 @@ li li { margin-left: 1.5em; padding-left: 1.5em; }
 }
 
 #diffviewer {
-    width: 1220px;
+    width: 1550px;
     height: 370px;
     margin-left: auto;
     margin-right: auto;
@@ -286,6 +286,6 @@ ul {
 .highlight {
     font-weight: bold;
 }
-#htmlview {
-    width:;
+#modalView {
+    height: 300px;
 }

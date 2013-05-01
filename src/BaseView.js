@@ -7,9 +7,9 @@ var BaseView = Backbone.View.extend({
     self.render();
 
     // change this to when shalist[]['blob'] changes..
-    // this.model.on('change:decodedContent', function() {
-    //   self.render(baseIndex);
-    // });
+    this.model.on('change:decodedContent', function() {
+      self.render();
+    });
     this.model.on('change:diffReady', function() {
       self.render();
     });
@@ -18,7 +18,7 @@ var BaseView = Backbone.View.extend({
   render: function(param) {
     var self = this;
     var viewText;
-    var baseIndex = Math.max(shaList.length - 1,0);
+    var baseIndex = Math.max(myApp.get('shaList').length - 1,0);
 
     this.$el.children().detach();
 
@@ -26,12 +26,12 @@ var BaseView = Backbone.View.extend({
     var $select = $('<select id="baseSelector">');
     this.$el.append($select);
     
-    if(shaList.length > 0) {
-      for(var i = 0; i < shaList.length; i++) {
-        if(shaList[i]['blob']) {
+    if(myApp.get('shaList').length > 0) {
+      for(var i = 0; i < myApp.get('shaList').length; i++) {
+        if(myApp.get('shaList')[i]['blob']) {
           var $optionItem = $("<option></option>");
-          $optionItem.attr("value",shaList[i]['time'])
-                     .text(shaList[i]['time']);
+          $optionItem.attr("value",myApp.get('shaList')[i]['time'])
+                     .text(myApp.get('shaList')[i]['time']);
           $select.append($optionItem);
         }
       }
@@ -42,12 +42,9 @@ var BaseView = Backbone.View.extend({
       $select.append($optionItem);
     };
 
-    if(shaList.length > 0) {
-      console.log('baseIndex',baseIndex)
-      console.log('shaList',shaList);
-      console.log('shaList.baseIndex',shaList[baseIndex])
+    if(myApp.get('shaList').length > 0) {
       viewText = '<p class="fileContent"><pre><code class="prettyprint">'
-               + shaList[baseIndex]['blob']
+               + myApp.get('shaList')[baseIndex]['blob']
                + '</code></pre></p>'; 
     } else {
       viewText = 'coming soon..';

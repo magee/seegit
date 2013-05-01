@@ -3,28 +3,26 @@
   <head>
     <meta charset="utf-8">
     <title>seegit by seung</title>
+    <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.light.css">
-    <!-- <link rel="stylesheet" href="css/style.dark.css"> -->
-    <script src="run_prettify.js"></script>
+    <!-- <link rel="stylesheet" href="css/style.dark.css">
+    <script src="run_prettify.js"></script> -->
     <script src="lib/underscore.js"></script>
     <script src="lib/jquery.js"></script>
     <script src="lib/backbone.js"></script>
-    <!--
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
-    -->
-    <link href="/twitter-bootstrap/twitter-bootstrap-v2/docs/assets/css/bootstrap.css" rel="stylesheet">
+
     <script src="src/App.js"></script>
-    <script src="src/AppView.js"></script>
-    <script src="src/RepoView.js"></script>
     <script src="src/RepoListView.js"></script>
     <script src="src/RepoItemView.js"></script>
+    <script src="src/RepoView.js"></script>
     <script src="src/RepoEntryView.js"></script>
+    
     <script src="src/FileView.js"></script>
+    <script src="src/ModalView.js"></script>
     <script src="src/BaseView.js"></script>
     <script src="src/DiffView.js"></script>
     <script src="src/HeadView.js"></script>
+    <script src="src/AppView.js"></script>
     <script src="src/decode64.js"></script>
     <script src="src/githubdata.js"></script>
     
@@ -47,48 +45,79 @@
 
     </div>
 
-<!--     <div id="htmlview">
-      <select id="testmenu">
-        <option val="one">one</option>
-        <option val="two">two</option>
-        <option val="three">three</option>
-      </select>
-    </div> -->
+    <div id="main">
+<!--  <div id="htmlview">
+        <select id="testmenu">
+          <option val="one">one</option>
+          <option val="two">two</option>
+          <option val="three">three</option>
+        </select>
+      </div> -->
+      <div id="fileViewer">
 
-    <div id="fileViewer">
-      <div id="dirMenu">
+        <div id="dirMenu">
+        </div>
+
+        <div id="dispfile">
+        </div>
+
       </div>
 
-      <div id="dispfile">
-      </div>
-    </div>
+      <div id="diffviewer">
 
-    <div id="diffviewer">
-      <div id="baseView">
+        <div id="baseView">
+        </div>
+
+        <div id="diffView">
+        </div>
+
+        <div id="headView">
+        </div>
+
       </div>
-      <div id="diffView">
-      </div>
-      <div id="headView">
+
+      <div id="modalView">
       </div>
     </div>
 
     <script>
+
+    // add conditional to change;decodedcontent
       var repos = [];
       var repoData = [];
-      var shaList;
+      // var shaList = [];
       var myApp;
       var myAppView;
+      var myModalView;
+      var myBaseView;
+      var myDiffView;
+      var myHeadView;
+      var mystr = "here: mystr 1";
+        
 
       $(function() {
-        shaList = [];
-        myApp = new App();
-        myAppView = new AppView({model: myApp});
+      var mystr2 = "here: mystr 2";
+      myApp = new App();
+      myModalView = new ModalView();
+      myAppView = new AppView({model: myApp});
+
+      myBaseView = new BaseView({model: myApp});
+      myDiffView = new DiffView({model: myApp});
+      myHeadView = new HeadView({model: myApp});
+
+
+        // console.log(App);
+        // myApp = new App();
+        //         console.log(ModalView);
+        // myModalView = new ModalView();
+        //         console.log(ModalView);
+        // myAppView = new AppView({model: myApp});
         // window.myApp = new App();
         // window.myAppView = new AppView({model: myApp});
 
-        $('body').append(myAppView.render());
+        //$('body').append(myAppView.render());
 
-        $('#userName').html(getDiff());
+        //$('#userName').html(getDiff());
         $("#submitButton").on('click',function(event) {
           event.preventDefault();
           myApp.set('showUser', $("#userName").val());

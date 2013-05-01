@@ -4,7 +4,7 @@ var App = Backbone.Model.extend({
   defaults: {
     'showUser': 'seung',
     'showFile': '',
-    // 'shaList': [],
+    'shaList': [],
     'decodedContent' : "(content of a selected file goes here)",
     'diffReady' : false,
     'showDiff' : false
