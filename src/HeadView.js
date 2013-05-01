@@ -34,8 +34,9 @@ var HeadView = Backbone.View.extend({
       for(var i = 0; i < myApp.get('shaList').length; i++) {
         if(myApp.get('shaList')[i]['blob']) {
           var $optionItem = $("<option></option>");
-          $optionItem.attr("value",myApp.get('shaList')[i]['time'])
-                     .text(myApp.get('shaList')[i]['time']);
+          $optionItem.attr("value",myApp.get('shaList')[i]['sha'])
+           //          .text(myApp.get('shaList')[i]['time']);
+                       .text(myApp.get('shaList')[i]['sha']);
           $select.append($optionItem);
         }
       }

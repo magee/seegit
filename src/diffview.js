@@ -6,25 +6,36 @@ var DiffView = Backbone.View.extend({
     var self = this;
     self.render();
 
-    myApp.on('change:showFile', function() {
-
+    myApp.on('change:diffText', function() {
+      self.render();
 
     });
   },
 
   render: function() {
+    var self = this;
     this.$el.children().detach();
     this.$el.append('<h4>diff view</h4>');
-    this.$el.append('<a href="#" id="showDiffResult"><h3>show</h3></a>');
-    this.$el.append('<p class="fileContent"><pre><code class="prettyprint">'+'coming soon..'+'</code></pre></p>');
+    this.$el.append('<a href="#" id="showDiffResult"><button>show</button></a>');
+    this.$el.append('<p class="fileContent">'+myApp.get('diffText')+'</p>');
     
     $('#showDiffResult').on('click', function(event) {
       event.preventDefault();
+      baseSha = $("#baseSelector option:selected").val();
+      console.log('baseSha',baseSha)
+      headSha = $("#headSelector option:selected").val();
+      console.log('headSha',headSha)
       /// fetch diffview here
+      self.getDiffText(baseSha,headSha);
+    });
 
-    ///temporarily overwrite
-      baseSha = myApp.get('shaList')[1]['sha'];
-      headSha = myApp.get('shaList')[0]['sha'];
+    return this;
+  },
+
+  getDiffText : function(baseSha, headSha) {
+      ///temporarily overwrite
+      // baseSha = myApp.get('shaList')[1]['sha'];
+      // headSha = myApp.get('shaList')[0]['sha'];
       //var diffUrl = 'https://api.github.com/repos/'+userName+'/'+repoName+'/compare/'+userName+':'+baseSha+'...'+userName+':'+headSha+'?'+cred;
       diffUrl = 'https://api.github.com/repos/'
               +myApp.get('showUser')+'/'
@@ -48,7 +59,7 @@ var DiffView = Backbone.View.extend({
           console.log(filesInResult);
           var fileNumber = filesInResult.indexOf(myApp.get('showFile'));
           var fileText = results['files'][fileNumber]['patch'];
-          //console.log(Object.keys(results['files'][0]));
+          myApp.set('diffText',fileText);
           //console.log(results['files'][0]['patch']);
           //console.info(results['files']['patch']);
         },
@@ -56,8 +67,5 @@ var DiffView = Backbone.View.extend({
           console.log('getDiffUrl error');
         }
       });
-    })
-
-    return this;
-  }
+    }
 });
