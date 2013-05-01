@@ -6,7 +6,8 @@ var App = Backbone.Model.extend({
     'showFile': '',
     // 'shaList': [],
     'decodedContent' : "(content of a selected file goes here)",
-    'diffReady' : false
+    'diffReady' : false,
+    'showDiff' : false
   },
 
   initialize: function(params) {

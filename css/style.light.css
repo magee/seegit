@@ -27,9 +27,6 @@ body {
     margin: 10px;
 }
 
-#header h1{
-    margin: 10px;
-}
 #header h1 b{ 
     color: rgb(201, 194, 190);
 }
@@ -38,6 +35,7 @@ body {
     text-align: right;
     color: rgb(163, 153, 148);
 }
+
 #logo {
     width: 420px;
     float: right;
@@ -243,20 +241,34 @@ ul {
     font: 16px/16px Helvetica;
 }*/
 
-#submitButton, #backButton  {
+#submitButton, #backButton {
     color: #f5edee;
     background-color: #A69894;
     float: left;
     width: 80px;
     height: 36px;
     margin: 0px 6px;
-    -webkit-border-radius: 5px;
+/*    -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-    border-radius: 5px; 
+    border-radius: 5px;*/ 
     font-size: 16px;
     font-weight: bold;
     outline: 1px dashed #f5edee;
     outline-offset: -5px;
+}
+#diffit {
+    float: right;
+    text-decoration: none;
+    font: 24px/18px Helvetica;
+    color: #82756f;
+
+}
+#diffit h1 {
+    color: #82756f;
+}
+
+#diffit h1 b {
+    color: rgb(201, 194, 190);
 }
 
 .usernameInput{
