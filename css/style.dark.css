@@ -1,0 +1,248 @@
+/*dark*/
+
+body {
+    /*background-image: -moz-radial-gradient(center, ellipse farthest-corner, #F2EAE2 0%, #ABA5A1 100%);*/
+    /*background-image: radial-gradient(ellipse farthest-corner at center, #F2EAE2 0%, #ABA5A1 100%);*/
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+#header{
+    display: block;
+    width: 1150px;
+    height: 100px;
+    padding: 20px 40px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    color: #82756f;
+    background: rgba(248, 114, 88, 0.91);
+    font: 24px/18px Helvetica;
+}
+
+#header h1{
+    margin: 10px;
+    color: rgb(240, 221, 212);
+}
+
+#header h1 b {
+color: rgb(207, 64, 64);
+}
+
+#header h3{
+    margin: 5px;
+    text-align: right;
+    /*color: rgb(223, 167, 154);*/
+    color: rgb(231, 204, 198);
+    opacity: .4;
+}
+
+#header h4{
+    margin-top: 25px;
+    margin-bottom: 2px;
+    color: rgb(240, 221, 212);
+}
+
+#logo {
+    width: 420px;
+    float: right;
+    text-align: right;
+    display: inline-block; 
+}
+
+#main {
+    display: block;
+    width: 1150px;
+    height: 800px;
+    margin: 0px;
+    padding: 20px 40px;
+    border: solid #ddd;
+    box-shadow: 10px 10px 5px #888888; 
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#form{
+    width: 600px;
+    float: left;
+    /*margin: 10px;*/
+}
+
+#form h4{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+ul { margin-left: 15px; padding-left: 0; }
+li li { margin-left: 1.5em; padding-left: 1.5em; }
+
+#dirMenu, #dispfile {
+    display: inline-block;
+    height: 350px;
+    overflow:scroll;
+    margin: 20px;
+    background: rgba(102, 101, 101, 0.91);
+    color: rgb(240, 221, 212);
+    text-align: left;
+}
+
+#dirMenu {
+    float: left;
+    width: 335px;
+    margin-left: 40px;
+    margin-right: 30px;
+    padding: 20px 40px 20px; 
+    font: 14px/16px Helvetica;
+}
+
+#dirMenu h4, #dispfile h4 {
+    font: 18px/16px Helvetica;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#dispfile {
+    float: left;
+    width: 680px;
+    margin-left: 20px;
+    margin-right: 30px;
+    /*padding: 20px 40px;*/
+    font: 16px/18px Helvetica;
+    padding: 20px 40px 20px; 
+}
+#fileViewer {
+    width: 1300px;
+    height: 440px;
+    padding: 20px 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#diffviewer {
+    width: 1220px;
+    height: 370px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+#baseView, #diffView, #headView {
+    display: inline-block;
+    float: left;
+    width: 377px;
+    height: 350px;
+    overflow:scroll;
+    background: rgba(102, 101, 101, 0.91);
+    color: rgb(240, 221, 212);
+} 
+
+#baseView {
+    margin-right: 21px;
+    overflow:scroll;
+}
+
+#diffView {
+    margin-left: 21px;
+    margin-right: 21px;
+}
+#headView {
+    margin-left: 21px;
+}
+
+#baseSelector, #headSelector {
+    width: 200px;
+}
+
+#main h1 {
+    margin-top: 0;
+    font-size: 30px;
+    font-weight: bold;
+}
+#main ul {
+    padding-left: 20px;
+}
+
+
+/*#main ul span {
+    font-size: 10px;
+    color: gray;
+    float: right;
+}*/
+
+#repolist {
+    border:2px solid;
+    width: 320px;
+    height: 270px;
+    display: inline;
+}
+#repos {
+    border:2px solid;
+    border-radius:22px;
+    width: 320px;
+    height: 600px;
+    display: inline;
+}
+
+#repos .dir {
+    color: #82756f;
+}
+
+#repos .dir {
+    color: blue;
+}
+
+.dir {
+    color: blue;
+}
+
+ul {
+    list-style-type: none;
+}
+/*
+#fileView {
+    width: 400px;
+    height: 600px;
+    float: left;
+    display: inline;
+    font: 16px/16px Helvetica;
+}*/
+
+#submitButton, #backButton  {
+    color: #f5edee;
+    background-color: rgba(166, 152, 148, 0.89);
+    /*background-color: #A69894;*/
+    float: left;
+    width: 80px;
+    height: 36px;
+    margin: 0px 6px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px; 
+    font-size: 16px;
+    font-weight: bold;
+    outline: 1px dashed #f5edee;
+    outline-offset: -5px;
+}
+
+.usernameInput{
+    width: 220px;
+    height: 16px;
+    padding: 10px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px; 
+    font: 16px/16px Helvetica;
+}
+#userName, #submitButton {
+    float: left;
+}
+.highlight {
+    font-weight: bold;
+}

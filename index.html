@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>seegit by seung</title>
+    <link rel="stylesheet" href="css/style.light.css">
+    <!-- <link rel="stylesheet" href="css/style.dark.css"> -->
+    <script src="run_prettify.js"></script>
+    <script src="lib/underscore.js"></script>
+    <script src="lib/jquery.js"></script>
+    <script src="lib/backbone.js"></script>
+    <!--
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+    -->
+
+    <script src="src/App.js"></script>
+    <script src="src/AppView.js"></script>
+    <script src="src/RepoView.js"></script>
+    <script src="src/RepoListView.js"></script>
+    <script src="src/RepoItemView.js"></script>
+    <script src="src/RepoEntryView.js"></script>
+    <script src="src/FileView.js"></script>
+    <script src="src/BaseView.js"></script>
+    <script src="src/DiffView.js"></script>
+    <script src="src/HeadView.js"></script>
+    <script src="src/decode64.js"></script>
+    <script src="src/githubdata.js"></script>
+    
+  </head>
+  <body>
+
+    <div id="header">
+      <div id="logo">
+        <h1 class="title">see:<b>g</b>it</h1>
+        <h3 class="title">file history viewer</h3>
+      </div>
+
+      <div id="form">
+        <form class="submit">
+          <label for="userName"><h4>Enter github handle to view:<h4></label>
+          <input class="usernameInput" id="userName" type="text" value="" placeholder="username"> 
+          <input class="usernameSubmit" id="submitButton" type="submit" value="submit">
+        </form>
+      </div>
+
+    </div>
+
+    <div id="htmlview">
+      <select id="testmenu">
+        <option val="one">one</option>
+        <option val="two">two</option>
+        <option val="three">three</option>
+      </select>
+    </div>
+
+    <div id="fileViewer">
+      <div id="dirMenu">
+      </div>
+
+      <div id="dispfile">
+      </div>
+    </div>
+
+    <div id="diffviewer">
+      <div id="baseView">
+      </div>
+      <div id="diffView">
+      </div>
+      <div id="headView">
+      </div>
+    </div>
+
+    <script>
+      var repos = [];
+      var repoData = [];
+      var shaList;
+      var myApp;
+      var myAppView;
+
+      $(function() {
+        shaList = [];
+        myApp = new App();
+        myAppView = new AppView({model: myApp});
+        // window.myApp = new App();
+        // window.myAppView = new AppView({model: myApp});
+
+        $('body').append(myAppView.render());
+
+        $('#userName').html(getDiff());
+        $("#submitButton").on('click',function(event) {
+          event.preventDefault();
+          myApp.set('showUser', $("#userName").val());
+          console.log($("#userName").val());
+        });
+      });
+
+    </script>
+  </body>
+</html>

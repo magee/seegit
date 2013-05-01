@@ -1,0 +1,31 @@
+  fetchRepoContent: function(context) {
+    var fetchRepoContentUrl = 'https://api.github.com/repos/seung/'
+                            +this.get('currentRepo')+'/contents?'+cred;
+    //console.log('fetchRepoContentUrl ',fetchRepoContentUrl)
+//     $.when($.ajax(fetchRepoContentUrl,{
+//       contentType: 'application/json',
+//       dataType: 'jsonp',
+//       async: false,
+//       success: function(results) {      
+//         //window.rdata = results;
+//       },
+
+//       error: function(data) {
+//         console.log('getRepoData error');
+//       }
+//     })).done(function(results){
+//       repoData = [];
+//       for(var i = 0; i < results.data.length; i++) {
+//         var obj = {
+//           name: results.data[i].name,
+//           type: results.data[i].type,
+//           url: results.data[i].url,
+//           sha: results.data[i].sha
+//         }
+//         repoData.push(obj);
+//         // if(obj.type === 'dir') {
+//         //   var recursivedata = recursiveRepoData(reponame,obj.name,obj.sha);
+//         // }
+//       }
+//       context.set('currRepoData',repoData);
+// });
