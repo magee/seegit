@@ -26,6 +26,9 @@ var BaseView = Backbone.View.extend({
     var $select = $('<select id="baseSelector">');
     this.$el.append($select);
     
+    console.log('myApp',myApp);
+    console.log('length: ',myApp.get('shaList').length);
+    
     if(myApp.get('shaList').length > 0) {
       for(var i = 0; i < myApp.get('shaList').length; i++) {
         if(myApp.get('shaList')[i]['blob']) {

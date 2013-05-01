@@ -59,10 +59,9 @@ var AppView = Backbone.View.extend({
     return this;
   },
 
+  // returns the list of all repos for a given user
   fetchRepoListAndRender: function(context) {
     $.ajax('https://api.github.com/users/'+this.model.get('showUser')+'/repos?'+cred, {
-    //$.ajax('https://api.github.com/repos/seung/try_git/git/blobs/0ce0259a52b0df0d31441764ed6f690bff75c91c', {
-      //$.ajax('https://api.github.com/repos/seung/try_git/git/blobs/0ce0259a52b0df0d31441764ed6f690bff75c91c', {
       contentType: 'application/json',
       dataType: 'jsonp',
       success: function(results){

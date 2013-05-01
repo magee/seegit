@@ -10,12 +10,15 @@ var getAllCommitsForRepo = function(username, reponame, path) {
     contentType: 'application/json',
     dataType: 'jsonp',
     success: function(results){
-      shaList = [];
+      console.log('\n\ngetAllCommitsForRepo',myApp.get('showUser'));
+      myApp.set('shaList',[]);
+      var newList = [];
       for(commitIndex = 0; commitIndex < results.data.length; commitIndex++) {
-        //console.log('pushing onto shaList: ',({'sha':results.data[commitIndex].sha, 'time':results.data[commitIndex].commit.author.date}))
-        shaList.push({'sha':results.data[commitIndex].sha, 'time':results.data[commitIndex].commit.author.date});
+        //console.log('pushing onto myApp.get(shaList): ',({'sha':results.data[commitIndex].sha, 'time':results.data[commitIndex].commit.author.date}))
+        newList = newList.push({'sha':results.data[commitIndex].sha, 'time':results.data[commitIndex].commit.author.date});
       };
-      getBlobs(username, reponame, path);
+      myApp.set('shaList', newList);
+      getBlobs(myApp.get('username'), myApp.get('reponame'), myApp.get('path'));
     },
     error: function(data) {
       // TODO: following part does not work correctly
@@ -23,7 +26,9 @@ var getAllCommitsForRepo = function(username, reponame, path) {
         console.log('getAllCommitsForRepo error');
       } else {
         console.log('file has not been created at the time of this commit');
-        shaList[commitIndex]['blob'] = "(file does not exist)";
+        var newShaList = myApp.get('shaList');     
+        newShaList('shaList')[commitIndex]['blob'] = "(file does not exist)";
+        myApp.set('shaList',newShaList);
       };
     }
   });
@@ -31,8 +36,8 @@ var getAllCommitsForRepo = function(username, reponame, path) {
 
 var getBlobs = function(username, reponame, path) {
   console.log('getBlobs called with username, reponame, path: ',username, reponame, path)
-  console.log('shalist length',shaList.length)
-  for(var i = 0; i < shaList.length; i++) {
+  console.log('myApp.get(shaList) length',myApp.get('shaList').length)
+  for(var i = 0; i < myApp.get('shaList').length; i++) {
     //console.log('getBlobs i, username, reponame, path:',i, username, reponame, path)
     fetchBlobs(i, username, reponame, path);
   }
