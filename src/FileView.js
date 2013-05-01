@@ -17,8 +17,8 @@ var FileView = Backbone.View.extend({
     this.$el.append('<a href="#" id="diffit"><h1>dif:<b>f</b>it</h1></a>');
     this.$el.append('<h4>current repo: '+myApp.get('currentRepo')+'</h4>');
     this.$el.append('<h4>showing file: '+myApp.get('showFile')+'</h4>');
-    this.$el.append('<p class="fileContent"><pre><code class="prettyprint">'+myApp.get('decodedContent')+'</code></pre></p>');
-    //this.$el.append('<p class="fileContent"><pre><code class="prettyprint">'+decodedContent+'</code></pre></p>');
+    this.$el.append('<p class="fileContent">'+myApp.get('decodedContent')+'</p>');
+    // this.$el.append('<p class="fileContent"><pre><code class="prettyprint">'+myApp.get('decodedContent')+'</code></pre></p>');
     $('#diffit').on('click', function(event) {
       event.preventDefault();
       myApp.set('showDiff',true);
@@ -26,7 +26,7 @@ var FileView = Backbone.View.extend({
     $('#modalView').append(new BaseView({model: this.model}).render().el);
     $('#modalView').append(new DiffView({model: this.model}).render().el);
     $('#modalView').append(new HeadView({model: this.model}).render().el); 
-
+$('#modalView').modal({'show':true});
       console.log('showDiff true',myApp.get('shaList'));
     })
     return this;

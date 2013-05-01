@@ -50,9 +50,12 @@ var BaseView = Backbone.View.extend({
 ////////// this part changes put in func
 baseIndex = 0;
     if(myApp.get('shaList').length > 0) {
-      viewText = '<p class="fileContent"><pre><code class="prettyprint">'
-               + myApp.get('shaList')[baseIndex]['blob']
-               + '</code></pre></p>'; 
+      viewText = '<p class="fileContent">'
+               + myApp.get('shaList')[baseIndex]['blob'].toString()
+               + '</p>'; 
+      // viewText = '<p class="fileContent"><pre><code class="prettyprint">'
+      //          + myApp.get('shaList')[baseIndex]['blob']
+      //          + '</code></pre></p>'; 
     } else {
       viewText = 'coming soon..';
     }

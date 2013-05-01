@@ -50,9 +50,12 @@ var HeadView = Backbone.View.extend({
 //////////// this part changes
 headIndex = 0;
     if(myApp.get('shaList').length > 0) {
-      viewText = '<p class="fileContent"><pre><code class="prettyprint">'
-               + myApp.get('shaList')[headIndex]['blob']
-               + '</code></pre></p>'; 
+      // viewText = '<p class="fileContent"><pre><code class="prettyprint">'
+      //          + myApp.get('shaList')[headIndex]['blob']
+      //          + '</code></pre></p>'; 
+      viewText = '<p class="fileContent">'
+               + myApp.get('shaList')[headIndex]['blob'].toString()
+               + '</p>'; 
     } else {
       viewText = 'coming soon..';
     }

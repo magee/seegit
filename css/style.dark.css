@@ -58,8 +58,8 @@ color: rgb(207, 64, 64);
     height: 800px;
     margin: 0px;
     padding: 20px 40px;
-    border: solid #ddd;
-    box-shadow: 10px 10px 5px #888888; 
+/*    border: solid #ddd;*/
+    /*box-shadow: 10px 10px 5px #888888; */
     float: left;
     margin-left: auto;
     margin-right: auto;
@@ -231,6 +231,14 @@ ul {
     outline-offset: -5px;
 }
 
+#diffit h1 {
+    color: rgb(240, 221, 212);
+}
+
+#diffit h1 b {
+    color: rgb(207, 64, 64);
+}
+
 .usernameInput{
     width: 220px;
     height: 16px;
@@ -246,3 +254,9 @@ ul {
 .highlight {
     font-weight: bold;
 }
+#modalView {
+    display:inline-block;
+    width: 800px;
+    height: 300px;
+}
+

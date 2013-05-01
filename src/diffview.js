@@ -1,6 +1,6 @@
 var DiffView = Backbone.View.extend({
 
-  el: '#diffView',
+  el: '#diffModal',
 
   initialize: function(params) {
     var self = this;
@@ -17,7 +17,7 @@ var DiffView = Backbone.View.extend({
     this.$el.children().detach();
     this.$el.append('<h4>diff view</h4>');
     this.$el.append('<a href="#" id="showDiffResult"><button>show</button></a>');
-    this.$el.append('<p class="fileContent">'+myApp.get('diffText')+'</p>');
+    this.$el.append('<p class="fileContent">'+myApp.get('diffText').toString()+'</p>');
     
     $('#showDiffResult').on('click', function(event) {
       event.preventDefault();
