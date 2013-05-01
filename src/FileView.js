@@ -22,7 +22,12 @@ var FileView = Backbone.View.extend({
     $('#diffit').on('click', function(event) {
       event.preventDefault();
       myApp.set('showDiff',true);
-      alert('showDiff true');
+
+    $('#modalView').append(new BaseView({model: this.model}).render().el);
+    $('#modalView').append(new DiffView({model: this.model}).render().el);
+    $('#modalView').append(new HeadView({model: this.model}).render().el); 
+
+      console.log('showDiff true',myApp.get('shaList'));
     })
     return this;
   }

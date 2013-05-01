@@ -7,11 +7,12 @@ var HeadView = Backbone.View.extend({
     self.render();
 
     // change this to when shalist[]['blob'] changes..
-    this.model.on('change:decodedContent', function() {
+    myApp.on('change:decodedContent', function() {
       self.render();
     });
-    this.model.on('change:diffReady', function() {
-      self.render();
+    myApp.on('change:diffReady', function() {
+      if(myApp.get('diffReady'))
+        self.render();
     });
   },
 
@@ -29,24 +30,24 @@ var HeadView = Backbone.View.extend({
     console.log('myApp',myApp);
     console.log('length: ',myApp.get('shaList').length);
     
-      if(myApp.get('shaList').length > 0) {
-        for(var i = 0; i < myApp.get('shaList').length; i++) {
-          if(myApp.get('shaList')[i]['blob']) {
-            var optionItem = $("<option></option>");
-            optionItem.attr("value",myApp.get('shaList')[i]['time'])
-                      .text(myApp.get('shaList')[i]['time']);
-            $select.append($optionItem);
-          }
+     if(myApp.get('shaList').length > 0) {
+      for(var i = 0; i < myApp.get('shaList').length; i++) {
+        if(myApp.get('shaList')[i]['blob']) {
+          var $optionItem = $("<option></option>");
+          $optionItem.attr("value",myApp.get('shaList')[i]['time'])
+                     .text(myApp.get('shaList')[i]['time']);
+          $select.append($optionItem);
         }
-      } else {
-        var $optionItem = $("<option></option>");
-        $optionItem.attr("value","(file not selected)")
-                   .text('(file not selected)');
-        $select.append($optionItem);
-      };
+      }
+    } else {
+      var $optionItem = $("<option></option>");
+      $optionItem.attr("value","(file not selected)")
+                 .text("(file not selected)");
+      $select.append($optionItem);
+    };
 
-    //this.$el.append('</select>');
-
+//////////// this part changes
+headIndex = 0;
     if(myApp.get('shaList').length > 0) {
       viewText = '<p class="fileContent"><pre><code class="prettyprint">'
                + myApp.get('shaList')[headIndex]['blob']
@@ -54,8 +55,8 @@ var HeadView = Backbone.View.extend({
     } else {
       viewText = 'coming soon..';
     }
+    /////////
     this.$el.append('<br>'+viewText);
-
     return this;
   }
 });

@@ -18,13 +18,13 @@
     <script src="src/RepoEntryView.js"></script>
     
     <script src="src/FileView.js"></script>
-    <script src="src/ModalView.js"></script>
     <script src="src/BaseView.js"></script>
     <script src="src/DiffView.js"></script>
     <script src="src/HeadView.js"></script>
     <script src="src/AppView.js"></script>
     <script src="src/decode64.js"></script>
-    <script src="src/githubdata.js"></script>
+    <!--<script src="src/githubdata.js"></script>-->
+    <script src="src/ModalView.js"></script>
     
   </head>
   <body>
@@ -40,6 +40,7 @@
           <label for="userName"><h4>Enter github handle to view:<h4></label>
           <input class="usernameInput" id="userName" type="text" value="" placeholder="username"> 
           <input class="usernameSubmit" id="submitButton" type="submit" value="submit">
+                    <input class="diffSubmit" id="diffButton" type="submit" value="diff">
         </form>
       </div>
 
@@ -88,22 +89,22 @@
       // var shaList = [];
       var myApp;
       var myAppView;
-      var myModalView;
       var myBaseView;
       var myDiffView;
       var myHeadView;
+      var myModalView;
       var mystr = "here: mystr 1";
         
 
       $(function() {
       var mystr2 = "here: mystr 2";
       myApp = new App();
-      myModalView = new ModalView();
+      //myModalView = new ModalView();
       myAppView = new AppView({model: myApp});
 
-      myBaseView = new BaseView({model: myApp});
-      myDiffView = new DiffView({model: myApp});
-      myHeadView = new HeadView({model: myApp});
+      //myBaseView = new BaseView({model: myApp});
+      //myDiffView = new DiffView({model: myApp});
+      //myHeadView = new HeadView({model: myApp});
 
 
         // console.log(App);
@@ -122,6 +123,12 @@
           event.preventDefault();
           myApp.set('showUser', $("#userName").val());
           console.log($("#userName").val());
+        });
+
+        $("#diffButton").on('click',function(event) {
+          event.preventDefault();
+          myModalView = new ModalView();
+
         });
       });
 

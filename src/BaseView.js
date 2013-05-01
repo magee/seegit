@@ -7,11 +7,12 @@ var BaseView = Backbone.View.extend({
     self.render();
 
     // change this to when shalist[]['blob'] changes..
-    this.model.on('change:decodedContent', function() {
+    myApp.on('change:decodedContent', function() {
       self.render();
     });
-    this.model.on('change:diffReady', function() {
-      self.render();
+    myApp.on('change:diffReady', function() {
+      if(myApp.get('diffReady'))
+        self.render();
     });
   },
 
@@ -45,6 +46,8 @@ var BaseView = Backbone.View.extend({
       $select.append($optionItem);
     };
 
+////////// this part changes put in func
+baseIndex = 0;
     if(myApp.get('shaList').length > 0) {
       viewText = '<p class="fileContent"><pre><code class="prettyprint">'
                + myApp.get('shaList')[baseIndex]['blob']
@@ -52,6 +55,7 @@ var BaseView = Backbone.View.extend({
     } else {
       viewText = 'coming soon..';
     }
+    ///////////////
     this.$el.append('<br>'+viewText);
 
     return this;

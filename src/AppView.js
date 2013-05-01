@@ -44,9 +44,9 @@ var AppView = Backbone.View.extend({
     this.$el.append(new RepoView({model: this.model}).render().el);
     this.$el.append(new FileView({model: this.model}).render().el); 
     
-    this.$el.append(new BaseView({model: this.model}).render().el);
-    this.$el.append(new DiffView({model: this.model}).render().el);
-    this.$el.append(new HeadView({model: this.model}).render().el); 
+    // this.$el.append(new BaseView({model: this.model}).render().el);
+    // this.$el.append(new DiffView({model: this.model}).render().el);
+    // this.$el.append(new HeadView({model: this.model}).render().el); 
 
     $('.repoItems').on('click', function(event) {
       event.preventDefault();

@@ -240,3 +240,7 @@ ul {
 .highlight {
     font-weight: bold;
 }
+#modalView {
+    width: 1400px;
+    height: 60opx;
+}
