@@ -1,73 +1,73 @@
 // REMOVE THIS INFO
 var cred = 'client_id=57ef25d3cc1814331eb2&client_secret=215f49aec637bf0e9e8d7a97e911e69d9b008a77';
 
-var getAllCommitsForRepo = function(username, reponame, path) {
-  console.log('getting data for username, reponame, path : '+username + ' ' + reponame + ' ' + path);
-  var allCommitsUrl = 'https://api.github.com/repos/'+username+'/'+reponame+'/commits?'+cred;
-  //console.log(allCommitsUrl);
-  var commitIndex;
-  $.ajax(allCommitsUrl, {
-    contentType: 'application/json',
-    dataType: 'jsonp',
-    success: function(results){
-      console.log('\n\ngetAllCommitsForRepo',myApp.get('showUser'));
-      myApp.set('shaList',[]);
-      var newList = [];
-      for(commitIndex = 0; commitIndex < results.data.length; commitIndex++) {
-        //console.log('pushing onto myApp.get(shaList): ',({'sha':results.data[commitIndex].sha, 'time':results.data[commitIndex].commit.author.date}))
-        newList = newList.push({'sha':results.data[commitIndex].sha, 'time':results.data[commitIndex].commit.author.date});
-      };
-      myApp.set('shaList', newList);
-      getBlobs(myApp.get('username'), myApp.get('reponame'), myApp.get('path'));
-    },
-    error: function(data) {
-      // TODO: following part does not work correctly
-      if (commitIndex === 0) {
-        console.log('getAllCommitsForRepo error');
-      } else {
-        console.log('file has not been created at the time of this commit');
-        var newShaList = myApp.get('shaList');     
-        newShaList('shaList')[commitIndex]['blob'] = "(file does not exist)";
-        myApp.set('shaList',newShaList);
-      };
-    }
-  });
-}
+// var getAllCommitsForRepo = function(username, reponame, path) {
+//   console.log('getting data for username, reponame, path : '+username + ' ' + reponame + ' ' + path);
+//   var allCommitsUrl = 'https://api.github.com/repos/'+username+'/'+reponame+'/commits?'+cred;
+//   //console.log(allCommitsUrl);
+//   var commitIndex;
+//   $.ajax(allCommitsUrl, {
+//     contentType: 'application/json',
+//     dataType: 'jsonp',
+//     success: function(results){
+//       console.log('\n\ngetAllCommitsForRepo',myApp.get('showUser'));
+//       myApp.set('shaList',[]);
+//       var newList = [];
+//       for(commitIndex = 0; commitIndex < results.data.length; commitIndex++) {
+//         //console.log('pushing onto myApp.get(shaList): ',({'sha':results.data[commitIndex].sha, 'time':results.data[commitIndex].commit.author.date}))
+//         newList = newList.push({'sha':results.data[commitIndex].sha, 'time':results.data[commitIndex].commit.author.date});
+//       };
+//       myApp.set('shaList', newList);
+//       getBlobs(myApp.get('username'), myApp.get('reponame'), myApp.get('showFile'));
+//     },
+//     error: function(data) {
+//       // TODO: following part does not work correctly
+//       if (commitIndex === 0) {
+//         console.log('getAllCommitsForRepo error');
+//       } else {
+//         console.log('file has not been created at the time of this commit');
+//         var newShaList = myApp.get('shaList');     
+//         newShaList('shaList')[commitIndex]['blob'] = "(file does not exist)";
+//         myApp.set('shaList',newShaList);
+//       };
+//     }
+//   });
+// }
 
-var getBlobs = function(username, reponame, path) {
-  console.log('getBlobs called with username, reponame, path: ',username, reponame, path)
-  console.log('myApp.get(shaList) length',myApp.get('shaList').length)
-  for(var i = 0; i < myApp.get('shaList').length; i++) {
-    //console.log('getBlobs i, username, reponame, path:',i, username, reponame, path)
-    fetchBlobs(i, username, reponame, path);
-  }
-  blobReady = true;
-}
+// var getBlobs = function(username, reponame, path) {
+//   console.log('getBlobs called with username, reponame, path: ',username, reponame, path)
+//   console.log('myApp.get(shaList) length',myApp.get('shaList').length)
+//   for(var i = 0; i < myApp.get('shaList').length; i++) {
+//     //console.log('getBlobs i, username, reponame, path:',i, username, reponame, path)
+//     fetchBlobs(i, username, reponame, path);
+//   }
+//   blobReady = true;
+// }
 
-var fetchBlobs = function(index, username, reponame, path) { 
-  blobsUrl = 'https://api.github.com/repos/'+username+'/'+reponame+'/contents/'+path+'?ref='+shaList[index]['sha']+'&'+cred;
-  //console.log('fetchBlobs with index = ',index,' sha: ',shaList[index]['sha'])
-  //console.log(blobsUrl);
-  $.ajax(blobsUrl, {
-    //contentType: 'application/json',
-    //dataType: 'jsonp',
-    async: false,
-    success: function(results){
-      if(shaList[index] === undefined) console.log('data length mismatch error');
-      shaList[index]['blob'] = results['content'];
-      //console.log('results[content] = ',results['content']);
-      decodeFile(index, shaList[index]['blob']);
-      //console.log('shaList[index][blob]: ',shaList[index]['blob'])
-    },
-    error: function(data) {
-      console.log('fetchBlobs error');
-    }
-  });
-}
+// var fetchBlobs = function(index, username, reponame, path) { 
+//   blobsUrl = 'https://api.github.com/repos/'+username+'/'+reponame+'/contents/'+path+'?ref='+shaList[index]['sha']+'&'+cred;
+//   //console.log('fetchBlobs with index = ',index,' sha: ',shaList[index]['sha'])
+//   //console.log(blobsUrl);
+//   $.ajax(blobsUrl, {
+//     //contentType: 'application/json',
+//     //dataType: 'jsonp',
+//     async: false,
+//     success: function(results){
+//       if(shaList[index] === undefined) console.log('data length mismatch error');
+//       shaList[index]['blob'] = results['content'];
+//       //console.log('results[content] = ',results['content']);
+//       decodeFile(index, shaList[index]['blob']);
+//       //console.log('shaList[index][blob]: ',shaList[index]['blob'])
+//     },
+//     error: function(data) {
+//       console.log('fetchBlobs error');
+//     }
+//   });
+// }
 
-var decodeFile = function(j, input) {
-  return shaList[j]['blob'] = decode64(input);
-}
+// var decodeFile = function(j, input) {
+//   return shaList[j]['blob'] = decode64(input);
+// }
 
 var getDiffUrl = function(userName, repoName, baseSha, headSha) {
   if(baseSha === "undefined") {

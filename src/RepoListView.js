@@ -19,7 +19,6 @@ var RepoListView = Backbone.View.extend({
     $('.repoItems').on('click', function(event) {
       event.preventDefault();
       myApp.set('currentRepo',this.textContent);
-      console.log('currentRepo',this.textContent);
     });
 
     return this;
