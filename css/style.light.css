@@ -6,6 +6,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    width: 100%;
 }
 
 #header{
@@ -13,7 +14,7 @@ body {
     background: #f5edee;
     display: block;
     /*border-radius: 10px;*/
-    width: 1150px;
+    width: 80%;
     height: 100px;
     padding: 20px 40px;
     margin-left: auto;
@@ -46,7 +47,7 @@ body {
 #main {
     display: inline-block;
     width: 1600px;
-    height: 1200px;
+    height: 600px;
     margin: 0px;
     padding: 20px 40px;
     border: solid #ddd;
@@ -136,12 +137,6 @@ li li { margin-left: 1.5em; padding-left: 1.5em; }
     margin-right: auto;
 }
 
-body .modal {
-    width: 800px;
-    height: 370px; 
-    margin-left: auto;
-    margin-right: auto;
-}
 
 #diffviewer {
     width: 1550px;
@@ -224,16 +219,16 @@ body .modal {
     display: inline;
 }
 
-#repos .dir {
+/*#repos .dir {
     color: #82756f;
-}
+}*/
 
 #repos .dir {
-    color: blue;
+    color: rgb(196, 189, 186);
 }
 
 .dir {
-    color: blue;
+    color: rgb(196, 189, 186);
 }
 
 ul {
@@ -293,8 +288,23 @@ ul {
 .highlight {
     font-weight: bold;
 }
+
+.modal {
+    width: 34%;
+    height: 90%;
+    left: 7%;
+    right: 7%;
+/*    top: 5%;
+    bottom: 5%;*/
+    /*height: 370px; */
+    margin-left: auto;
+    margin-right: auto;
+/*    margin-top: auto;
+    margin-bottom: auto;*/
+}
+
 #modalView {
     display:inline-block;
-    width: 800px;
-    height: 300px;
+    /*height: 300px;*/
+    /*overflow: auto;*/
 }

@@ -71,7 +71,7 @@ li li { margin-left: 1.5em; padding-left: 1.5em; }
 #main {
     display: block;
     width: 1150px;
-    height: 800px;
+    height: 200px;
     margin: 0px;
     padding: 20px 40px;
     border: solid #ddd;
@@ -241,6 +241,7 @@ ul {
     font-weight: bold;
 }
 #modalView {
+/*    left: 50%;
     width: 1400px;
-    height: 60opx;
+    height: 60opx;*/
 }

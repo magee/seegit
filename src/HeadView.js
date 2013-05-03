@@ -22,8 +22,9 @@ var HeadView = Backbone.View.extend({
     var headIndex = 0;
 
     this.$el.children().detach();
-
-    this.$el.append('<h4>head (newer) file</h4>');
+    this.$el.addClass("span3");
+    //this.$el.append('<h4>head (newer) file</h4>');
+    this.$el.append('<h4>head file</h4>');
     var $select = $('<select id="headSelector">');
     this.$el.append($select);
 
@@ -53,9 +54,9 @@ headIndex = 0;
       // viewText = '<p class="fileContent"><pre><code class="prettyprint">'
       //          + myApp.get('shaList')[headIndex]['blob']
       //          + '</code></pre></p>'; 
-      viewText = '<p class="fileContent">'
+      viewText = '<p class="fileContent"><!--'
                + myApp.get('shaList')[headIndex]['blob'].toString()
-               + '</p>'; 
+               + '--></p>'; 
     } else {
       viewText = 'coming soon..';
     }

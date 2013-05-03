@@ -8,12 +8,12 @@ var DiffView = Backbone.View.extend({
 
     myApp.on('change:diffText', function() {
       self.render();
-
     });
   },
 
   render: function() {
     var self = this;
+    this.$el.addClass("span3");
     this.$el.children().detach();
     this.$el.append('<h4>diff view</h4>');
     this.$el.append('<a href="#" id="showDiffResult"><button>show</button></a>');

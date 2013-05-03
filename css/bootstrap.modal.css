@@ -1,3 +1,9 @@
+.modal {
+  width: 80%;
+  left: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .modal-footer:before,
 .modal-footer:after {
@@ -21,4 +27,10 @@
 
 .modal-footer .btn-block + .btn-block {
   margin-left: 0;
+}
+
+#modalView {
+    left: 50%;
+    width: 1400px;
+    height: 60opx;
 }

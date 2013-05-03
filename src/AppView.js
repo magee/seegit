@@ -8,7 +8,7 @@ var AppView = Backbone.View.extend({
     this.fetchFileContentAndRender(self);
 
     this.model.on('change:showUser', function() {
-      console.log('change:showUser');
+      // console.log('change:showUser');
       decodedContent = "(content of a selected file goes here)";
       myApp.set('decodedContent',decodedContent);
       myApp.set('showFile', "");
@@ -17,7 +17,7 @@ var AppView = Backbone.View.extend({
     });
 
     this.model.on('change:currentRepo', function() {
-      console.log('change:currentRepo');
+      // console.log('change:currentRepo');
       decodedContent = "(content of a selected file goes here)";
       myApp.set('decodedContent',decodedContent);
       myApp.set('showFile', "");
@@ -117,10 +117,10 @@ var AppView = Backbone.View.extend({
           }
           repoData.push(obj);
           // not used temporarily due to download speed
-          // if(obj.type === 'dir') {
-          //   self.recursiveRepoData(obj.name,obj.sha,context);
-          //   console.log('calling recursiveRepoData');
-          // }
+          if(obj.type === 'dir') {
+            self.recursiveRepoData(obj.name,obj.sha,context);
+            console.log('calling recursiveRepoData');
+          }
         };
         context.render();
       },

@@ -2,7 +2,8 @@
 
 var ModalView = Backbone.View.extend({
 
-  el: '#modalView',
+  // el: '#modalView',
+  el: '#diffModal',
 
   initialize: function(params) {
     var self = this;
@@ -12,12 +13,12 @@ var ModalView = Backbone.View.extend({
   render: function() {
     var self = this;
     this.$el.children().detach();
+
     this.$el.append(new BaseFileView(0));
     this.$el.append(new DiffFileView(0,1));
     this.$el.append(new HeadFileView(0));
     return this;
   }
-
 });
 
 var BaseFileView = Backbone.View.extend({
@@ -29,6 +30,7 @@ var BaseFileView = Backbone.View.extend({
   render: function(){
     var self = this;  
     this.$el.children().detach();
+    this.$el.addClass("span3");
     this.$el.append('<h4>base (older) file</h4>');
 
     var $select = $('<select id="headSelector">');
@@ -64,6 +66,7 @@ var DiffFileView = Backbone.View.extend({
   render: function(){
     var self = this; 
     this.$el.children().detach();
+    this.$el.addClass("span3");
     this.$el.append('<h4>diff file</h4>');
     return this;
   }
@@ -79,6 +82,7 @@ var HeadFileView = Backbone.View.extend({
   render: function(){
     var self = this;  
     this.$el.children().detach();
+    this.$el.addClass("span3");
     this.$el.append('<h4>base (older) file</h4>');
 
     var $select = $('<select id="headSelector">');

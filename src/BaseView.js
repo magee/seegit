@@ -22,8 +22,8 @@ var BaseView = Backbone.View.extend({
     var baseIndex = Math.max(myApp.get('shaList').length - 1,0);
 
     this.$el.children().detach();
-
-    this.$el.append('<h4>base (older) file</h4>');
+    this.$el.addClass("span3");
+    this.$el.append('<h4>base file</h4>');
     var $select = $('<select id="baseSelector">');
     this.$el.append($select);
     
@@ -50,9 +50,9 @@ var BaseView = Backbone.View.extend({
 ////////// this part changes put in func
 baseIndex = 0;
     if(myApp.get('shaList').length > 0) {
-      viewText = '<p class="fileContent">'
+      viewText = '<p class="fileContent"><!--'
                + myApp.get('shaList')[baseIndex]['blob'].toString()
-               + '</p>'; 
+               + '--></p>'; 
       // viewText = '<p class="fileContent"><pre><code class="prettyprint">'
       //          + myApp.get('shaList')[baseIndex]['blob']
       //          + '</code></pre></p>'; 
